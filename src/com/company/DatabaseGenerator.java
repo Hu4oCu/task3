@@ -3,46 +3,31 @@ package com.company;
 import com.company.service.TableService;
 import com.company.service.impl.TableServiceImpl;
 import com.company.table.Table;
-import com.company.table.TableBuilder;
 import com.company.table.field.Field;
-import com.company.table.field.FieldBuilder;
-
 import java.util.List;
 
 public class DatabaseGenerator {
     private TableService service = new TableServiceImpl();
 
-    public void createSchema(List<Table> tables) {
+    public void createSchemas(List<Table> tables) {
         for (Table table : tables) {
-            Table result = new TableBuilder()
-                    .buildTableName(table.getTableName())
-                    .buildFields(table.getFields())
-                    .buildComment(table.getComment())
-                    .build();
-
-            service.createTable(result);
+            service.createTable(table);
         }
     }
 
     public void addField(String tableName, Field field) {
-        Field result = new FieldBuilder()
-                .buildName(field.getFieldName())
-                .buildType(field.getFieldType())
-                .buildComment(field.getFieldComment())
-                .buildPrimaryKey(field.isPrimaryKey())
-                .build();
-
-        service.addColumn(tableName, result);
+        service.addColumn(tableName, field);
     }
 
 
 //    public void addFields(String tableName, List<Field> fields) {
 //        for (Field field : fields) {
 //            Field result = new FieldBuilder()
-//                    .buildName(field.getFieldName())
-//                    .buildType(field.getFieldType())
-//                    .buildComment(field.getFieldComment())
-//                    .buildPrimaryKey(field.isPrimaryKey())
+//                    .name(field.getFieldName())
+//                    .type(field.getFieldType())
+//                    .comment(field.getFieldComment())
+//                    .primaryKey(field.isPrimaryKey())
+//                    .foreignKey(field.getForeignKey())
 //                    .build();
 //
 //            service.addColumn(tableName, result);

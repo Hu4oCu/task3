@@ -32,5 +32,4 @@ public class Table {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
 }

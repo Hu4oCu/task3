@@ -9,17 +9,17 @@ public class TableBuilder {
     private List<Field> fields = null;
     private String comment = "";
 
-    public TableBuilder buildTableName(String tableName) {
+    public TableBuilder tableName(String tableName) {
         this.tableName = tableName;
         return this;
     }
 
-    public TableBuilder buildFields(List<Field> fields) {
+    public TableBuilder fields(List<Field> fields) {
         this.fields = fields;
         return this;
     }
 
-    public TableBuilder buildComment(String comment) {
+    public TableBuilder comment(String comment) {
         this.comment = comment;
         return this;
     }

@@ -5,29 +5,41 @@ public class FieldBuilder {
     private FieldType fieldType = FieldType.INTEGER;
     private String fieldComment = "";
     private boolean primaryKey = false;
-    private ForeignKey foreignKey = null;
+    private boolean notNull = false;
+    private boolean autoIncrement;
+    private ForeignKey foreignKey;
 
-    public FieldBuilder buildName(String fieldName) {
+    public FieldBuilder fieldName(String fieldName) {
         this.fieldName = fieldName;
         return this;
     }
 
-    public FieldBuilder buildType(FieldType fieldType) {
+    public FieldBuilder fieldType(FieldType fieldType) {
         this.fieldType = fieldType;
         return this;
     }
 
-    public FieldBuilder buildComment(String fieldComment) {
+    public FieldBuilder fieldComment(String fieldComment) {
         this.fieldComment = fieldComment;
         return this;
     }
 
-    public FieldBuilder buildPrimaryKey(boolean primaryKey) {
+    public FieldBuilder primaryKey(boolean primaryKey) {
         this.primaryKey = primaryKey;
         return this;
     }
 
-    public FieldBuilder buildForeignKey(ForeignKey foreignKey) {
+    public FieldBuilder notNull(boolean notNull) {
+        this.notNull = notNull;
+        return this;
+    }
+
+    public FieldBuilder autoIncrement(boolean autoIncrement) {
+        this.autoIncrement = autoIncrement;
+        return this;
+    }
+
+    public FieldBuilder foreignKey(ForeignKey foreignKey) {
         this.foreignKey = foreignKey;
         return this;
     }
@@ -39,6 +51,8 @@ public class FieldBuilder {
         field.setFieldType(fieldType);
         field.setFieldComment(fieldComment);
         field.setPrimaryKey(primaryKey);
+        field.setNotNull(notNull);
+        field.setAutoIncrement(autoIncrement);
         field.setForeignKey(foreignKey);
 
         return field;

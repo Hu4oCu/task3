@@ -5,6 +5,8 @@ public class Field {
     private FieldType fieldType;
     private String fieldComment;
     private boolean primaryKey;
+    private boolean notNull;
+    private boolean autoIncrement;
     private ForeignKey foreignKey;
 
     public String getFieldName() {
@@ -37,6 +39,22 @@ public class Field {
 
     public void setPrimaryKey(boolean primaryKey) {
         this.primaryKey = primaryKey;
+    }
+
+    public boolean isNotNull() {
+        return notNull;
+    }
+
+    public void setNotNull(boolean notNull) {
+        this.notNull = notNull;
+    }
+
+    public boolean isAutoIncrement() {
+        return autoIncrement;
+    }
+
+    public void setAutoIncrement(boolean autoIncrement) {
+        this.autoIncrement = autoIncrement;
     }
 
     public ForeignKey getForeignKey() {

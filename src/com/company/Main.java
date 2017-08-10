@@ -2,7 +2,8 @@ package com.company;
 
 public class Main {
     public static void main(String[] args) {
-        DatabaseGenerator generator = new DatabaseGenerator();
+        Tables tables = new Tables();
 
+        tables.createTables();
     }
 }

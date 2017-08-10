@@ -2,7 +2,12 @@ package com.company.table.field;
 
 public class ForeignKey {
     private String tableName;
-    private String fieldName;
+    private String columnName;
+
+    public ForeignKey(String tableName, String columnName) {
+        this.tableName = tableName;
+        this.columnName = columnName;
+    }
 
     public String getTableName() {
         return tableName;
@@ -12,11 +17,12 @@ public class ForeignKey {
         this.tableName = tableName;
     }
 
-    public String getFieldName() {
-        return fieldName;
+    public String getColumnName() {
+        return columnName;
     }
 
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
+    public void setColumnName(String columnName) {
+        this.columnName = columnName;
     }
 }
+

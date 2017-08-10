@@ -20,12 +20,12 @@ public class TableServiceImpl implements TableService {
 
     @Override
     public void createTable(Table table) {
-        Connection con = databaseConnectionMysql.getConnection(DB_NAME, DB_USER, DB_PASSWORD);
-        StringBuilder sqlQuery = new StringBuilder();
-
-        FieldsToSQL fieldsToSQL = new FieldsToSQL();
-
         try {
+            Connection con = databaseConnectionMysql.getConnection(DB_NAME, DB_USER, DB_PASSWORD);
+
+            StringBuilder sqlQuery = new StringBuilder();
+            FieldsToSQL fieldsToSQL = new FieldsToSQL();
+
             sqlQuery.append("CREATE TABLE IF NOT EXISTS ").append(table.getTableName())
                     .append(" ").append(fieldsToSQL.getFieldsAsString(table.getFields()));
             if (table.getComment() != null) {
@@ -36,23 +36,6 @@ public class TableServiceImpl implements TableService {
             statement.execute(sqlQuery.toString());
 
             System.out.println(sqlQuery);
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @Override
-    public void dropTable(String tableName) {
-        Connection con = databaseConnectionMysql.getConnection(DB_NAME, DB_USER, DB_PASSWORD);
-        StringBuilder sqlQuery = new StringBuilder();
-
-        try {
-            sqlQuery.append("DROP TABLE IF EXISTS ").append(tableName);
-
-            statement = con.createStatement();
-            statement.execute(sqlQuery.toString());
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,22 +64,6 @@ public class TableServiceImpl implements TableService {
     }
 
     @Override
-    public void dropColumn(String tableName, String fieldName) {
-        Connection con = databaseConnectionMysql.getConnection(DB_NAME, DB_USER, DB_PASSWORD);
-        StringBuilder sqlQuery = new StringBuilder();
-
-        try {
-            sqlQuery.append("ALTER TABLE ").append(tableName).append(" DROP COLUMN ").append(fieldName);
-
-            statement = con.createStatement();
-            statement.execute(sqlQuery.toString());
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
     public void changeColumn(String tableName, String tableName2, Field field) {
         Connection con = databaseConnectionMysql.getConnection(DB_NAME, DB_USER, DB_PASSWORD);
         StringBuilder sqlQuery = new StringBuilder();
@@ -111,6 +78,5 @@ public class TableServiceImpl implements TableService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }

@@ -31,17 +31,44 @@ public class FieldsToSQL {
                     fieldType = "VARCHAR(255)";
                     break;
                 }
+                case DATE: {
+                    fieldType = "DATE";
+                    break;
+                }
+                case DATETIME: {
+                    fieldType = "DATETIME";
+                    break;
+                }
+                case TIMESTAMP: {
+                    fieldType = "TIMESTAMP";
+                    break;
+                }
+                case YEAR: {
+                    fieldType = "YEAR";
+                    break;
+                }
             }
 
             query.append(fields.get(index).getFieldName()).append(" ").append(fieldType);
             if (fields.get(index).isPrimaryKey()) {
                 query.append(" PRIMARY KEY");
             }
-
+            if (fields.get(index).isNotNull()) {
+                query.append(" NOT NULL");
+            }
+            if (fields.get(index).isAutoIncrement()) {
+                query.append(" AUTO_INCREMENT");
+            }
+            if (fields.get(index).getForeignKey() != null) {
+                query.append(" ,FOREIGN KEY(").append(fields.get(index).getFieldName())
+                        .append(") ").append(" REFERENCES ")
+                        .append(fields.get(index).getForeignKey().getTableName()).append("(")
+                        .append(fields.get(index).getForeignKey().getColumnName())
+                        .append(")");
+            }
             if (fields.get(index).getFieldComment() != null) {
                 query.append(" COMMENT '").append(fields.get(index).getFieldComment()).append("'");
             }
-
             if (index < fields.size() - 1) {
                 query.append(", ");
             }
