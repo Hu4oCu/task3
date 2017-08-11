@@ -2,7 +2,7 @@ package com.company.table.field;
 
 public class FieldBuilder {
     private String fieldName = "";
-    private FieldType fieldType = FieldType.INTEGER;
+    private FieldType fieldType = FieldType.SIGNED_INTEGER;
     private String fieldComment = "";
     private boolean primaryKey = false;
     private boolean notNull = false;

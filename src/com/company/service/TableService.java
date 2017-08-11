@@ -5,6 +5,8 @@ import com.company.table.Table;
 
 public interface TableService {
     void createTable(Table table);
+    void alterTable(Table table);
+    boolean tableExists(Table table);
     void addColumn(String tableName, Field field);
-    void changeColumn(String tableName, String tableName2, Field field);
+    void changeColumnType(Table table, Field field);
 }

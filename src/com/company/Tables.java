@@ -2,23 +2,19 @@ package com.company;
 
 import com.company.table.Table;
 import com.company.table.TableBuilder;
-import com.company.table.field.Field;
-import com.company.table.field.FieldBuilder;
-import com.company.table.field.FieldType;
-import com.company.table.field.ForeignKey;
+import com.company.table.field.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Tables {
+    private List<Table> tables = new ArrayList<>();
 
     public List<Table> createTables() {
-        List<Table> tables = new ArrayList<>();
-
         // STUDENT TABLE AND FIELDS START //
         List<Field> studentsFields = new ArrayList<>();
         Field studentsID = new FieldBuilder()
                 .fieldName("student_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .primaryKey(true)
                 .notNull(true)
                 .autoIncrement(true)
@@ -62,7 +58,7 @@ public class Tables {
         List<Field> studentTransactionsFields = new ArrayList<>();
         Field transactionID = new FieldBuilder()
                 .fieldName("transaction_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .primaryKey(true)
                 .notNull(true)
                 .autoIncrement(true)
@@ -70,8 +66,8 @@ public class Tables {
 
         Field transactionStudentID = new FieldBuilder()
                 .fieldName("student_id")
-                .fieldType(FieldType.INTEGER)
-                .foreignKey(new ForeignKey("students", "students_id"))
+                .fieldType(FieldType.UNSIGNED_INTEGER)
+                .foreignKey(new ForeignKey("students", "student_id"))
                 .build();
 
         Field transactionPostDate = new FieldBuilder()
@@ -81,7 +77,7 @@ public class Tables {
 
         Field transactionAmount = new FieldBuilder()
                 .fieldName("amount")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.SIGNED_INTEGER)
                 .build();
 
         Field transactionDescription = new FieldBuilder()
@@ -104,23 +100,23 @@ public class Tables {
 
         // STUDENT ENROLLMENTS TABLE AND FIELDS START //
         List<Field> enrollmentsFields = new ArrayList<>();
-        Field enrollmentsCourseID = new FieldBuilder()
-                .fieldName("course_id")
-                .fieldType(FieldType.INTEGER)
-                .foreignKey(new ForeignKey("courses", "course_id"))
-                .build();
-
         Field enrollmentsSection = new FieldBuilder()
                 .fieldName("section")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .primaryKey(true)
                 .notNull(true)
                 .autoIncrement(true)
                 .build();
 
+        Field enrollmentsCourseID = new FieldBuilder()
+                .fieldName("course_id")
+                .fieldType(FieldType.UNSIGNED_INTEGER)
+                .foreignKey(new ForeignKey("courses", "course_id"))
+                .build();
+
         Field enrollmentsStudentID = new FieldBuilder()
                 .fieldName("student_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .foreignKey(new ForeignKey("students", "student_id"))
                 .build();
 
@@ -139,7 +135,7 @@ public class Tables {
         List<Field> coursesFields = new ArrayList<>();
         Field courseID = new FieldBuilder()
                 .fieldName("course_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .primaryKey(true)
                 .notNull(true)
                 .autoIncrement(true)
@@ -147,7 +143,7 @@ public class Tables {
 
         Field courseDepartmentID = new FieldBuilder()
                 .fieldName("department_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .foreignKey(new ForeignKey("departments", "department_id"))
                 .build();
 
@@ -163,7 +159,7 @@ public class Tables {
 
         Field courseCost = new FieldBuilder()
                 .fieldName("cost")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.SIGNED_INTEGER)
                 .build();
 
         coursesFields.add(courseID);
@@ -183,29 +179,29 @@ public class Tables {
         List<Field> gradesFields = new ArrayList<>();
         Field gradesStudentID = new FieldBuilder()
                 .fieldName("student_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .foreignKey(new ForeignKey("students", "student_id"))
                 .build();
 
         Field gradesCourseID = new FieldBuilder()
                 .fieldName("course_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .foreignKey(new ForeignKey("courses", "course_id"))
                 .build();
 
         Field gradesYear = new FieldBuilder()
-                .fieldName("year")
+                .fieldName("grade_year")
                 .fieldType(FieldType.YEAR)
                 .build();
 
         Field gradesSemester = new FieldBuilder()
                 .fieldName("semester")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.SIGNED_INTEGER)
                 .build();
 
         Field gradesGrade = new FieldBuilder()
                 .fieldName("grade")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.SIGNED_INTEGER)
                 .build();
 
         gradesFields.add(gradesStudentID);
@@ -225,19 +221,19 @@ public class Tables {
         List<Field> sectionsFields = new ArrayList<>();
         Field sectionsCourseID = new FieldBuilder()
                 .fieldName("course_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .foreignKey(new ForeignKey("courses", "course_id"))
                 .build();
 
         Field sectionsSection = new FieldBuilder()
                 .fieldName("section")
-                .fieldType(FieldType.STRING)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .foreignKey(new ForeignKey("enrollments", "section"))
                 .build();
 
         Field sectionsDays = new FieldBuilder()
                 .fieldName("days")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.SIGNED_INTEGER)
                 .build();
 
         Field sectionsStartTime = new FieldBuilder()
@@ -247,18 +243,18 @@ public class Tables {
 
         Field sectionsLength = new FieldBuilder()
                 .fieldName("length")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.SIGNED_INTEGER)
                 .build();
 
         Field sectionsProfessorID = new FieldBuilder()
                 .fieldName("professor_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .foreignKey(new ForeignKey("employees", "employer_id"))
                 .build();
 
         Field sectionsCapacity = new FieldBuilder()
                 .fieldName("capacity")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.SIGNED_INTEGER)
                 .build();
 
         sectionsFields.add(sectionsCourseID);
@@ -280,7 +276,7 @@ public class Tables {
         List<Field> employeesFields = new ArrayList<>();
         Field employerID = new FieldBuilder()
                 .fieldName("employer_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .primaryKey(true)
                 .notNull(true)
                 .autoIncrement(true)
@@ -298,12 +294,12 @@ public class Tables {
 
         Field employeesSalary = new FieldBuilder()
                 .fieldName("salary")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.SIGNED_INTEGER)
                 .build();
 
         Field employeesDepartmentID = new FieldBuilder()
                 .fieldName("department_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
                 .foreignKey(new ForeignKey("departments", "department_id"))
                 .build();
 
@@ -324,7 +320,10 @@ public class Tables {
         List<Field> departmentFields = new ArrayList<>();
         Field departmentID = new FieldBuilder()
                 .fieldName("department_id")
-                .fieldType(FieldType.INTEGER)
+                .fieldType(FieldType.UNSIGNED_INTEGER)
+                .primaryKey(true)
+                .notNull(true)
+                .autoIncrement(true)
                 .build();
 
         Field description = new FieldBuilder()
@@ -354,4 +353,7 @@ public class Tables {
         return tables;
     }
 
+    public List<Table> getTables() {
+        return tables;
+    }
 }

@@ -1,20 +1,20 @@
 package com.company.table.field;
 
 public class ForeignKey {
-    private String tableName;
+    private String referenceTableName;
     private String columnName;
 
-    public ForeignKey(String tableName, String columnName) {
-        this.tableName = tableName;
+    public ForeignKey(String referenceTableName, String columnName) {
+        this.referenceTableName = referenceTableName;
         this.columnName = columnName;
     }
 
-    public String getTableName() {
-        return tableName;
+    public String getReferenceTableName() {
+        return referenceTableName;
     }
 
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
+    public void setReferenceTableName(String referenceTableName) {
+        this.referenceTableName = referenceTableName;
     }
 
     public String getColumnName() {
