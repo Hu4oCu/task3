@@ -1,7 +1,6 @@
 package com.company.table;
 
 import com.company.table.field.Field;
-
 import java.util.List;
 
 public class TableBuilder {

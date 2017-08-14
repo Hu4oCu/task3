@@ -6,8 +6,8 @@ public class FieldBuilder {
     private String fieldComment = "";
     private boolean primaryKey = false;
     private boolean notNull = false;
-    private boolean autoIncrement;
-    private ForeignKey foreignKey;
+    private boolean autoIncrement = false;
+    private ForeignKey foreignKey = null;
 
     public FieldBuilder fieldName(String fieldName) {
         this.fieldName = fieldName;

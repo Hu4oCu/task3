@@ -38,8 +38,6 @@ public class TableServiceImpl implements TableService {
 
     @Override
     public void alterTable(Table table) {
-
-
         List<Field> fields = table.getFields();
         for (Field field : fields) {
             try {
