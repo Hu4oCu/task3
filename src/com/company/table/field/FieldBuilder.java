@@ -24,18 +24,18 @@ public class FieldBuilder {
         return this;
     }
 
-    public FieldBuilder primaryKey(boolean primaryKey) {
-        this.primaryKey = primaryKey;
+    public FieldBuilder primaryKey() {
+        this.primaryKey = true;
         return this;
     }
 
-    public FieldBuilder notNull(boolean notNull) {
-        this.notNull = notNull;
+    public FieldBuilder notNull() {
+        this.notNull = true;
         return this;
     }
 
-    public FieldBuilder autoIncrement(boolean autoIncrement) {
-        this.autoIncrement = autoIncrement;
+    public FieldBuilder autoIncrement() {
+        this.autoIncrement = true;
         return this;
     }
 

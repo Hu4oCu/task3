@@ -15,9 +15,9 @@ public class Tables {
         Field studentsID = new FieldBuilder()
                 .fieldName("student_id")
                 .fieldType(FieldType.UNSIGNED_INTEGER)
-                .primaryKey(true)
-                .notNull(true)
-                .autoIncrement(true)
+                .primaryKey()
+                .notNull()
+                .autoIncrement()
                 .fieldComment("students ID")
                 .build();
 
@@ -59,9 +59,9 @@ public class Tables {
         Field transactionID = new FieldBuilder()
                 .fieldName("transaction_id")
                 .fieldType(FieldType.UNSIGNED_INTEGER)
-                .primaryKey(true)
-                .notNull(true)
-                .autoIncrement(true)
+                .primaryKey()
+                .notNull()
+                .autoIncrement()
                 .build();
 
         Field transactionStudentID = new FieldBuilder()
@@ -103,9 +103,9 @@ public class Tables {
         Field enrollmentsSection = new FieldBuilder()
                 .fieldName("section")
                 .fieldType(FieldType.UNSIGNED_INTEGER)
-                .primaryKey(true)
-                .notNull(true)
-                .autoIncrement(true)
+                .primaryKey()
+                .notNull()
+                .autoIncrement()
                 .build();
 
         Field enrollmentsCourseID = new FieldBuilder()
@@ -136,9 +136,9 @@ public class Tables {
         Field courseID = new FieldBuilder()
                 .fieldName("course_id")
                 .fieldType(FieldType.UNSIGNED_INTEGER)
-                .primaryKey(true)
-                .notNull(true)
-                .autoIncrement(true)
+                .primaryKey()
+                .notNull()
+                .autoIncrement()
                 .build();
 
         Field courseDepartmentID = new FieldBuilder()
@@ -277,9 +277,9 @@ public class Tables {
         Field employerID = new FieldBuilder()
                 .fieldName("employer_id")
                 .fieldType(FieldType.UNSIGNED_INTEGER)
-                .primaryKey(true)
-                .notNull(true)
-                .autoIncrement(true)
+                .primaryKey()
+                .notNull()
+                .autoIncrement()
                 .build();
 
         Field employeesFirstName = new FieldBuilder()
@@ -321,9 +321,9 @@ public class Tables {
         Field departmentID = new FieldBuilder()
                 .fieldName("department_id")
                 .fieldType(FieldType.UNSIGNED_INTEGER)
-                .primaryKey(true)
-                .notNull(true)
-                .autoIncrement(true)
+                .primaryKey()
+                .notNull()
+                .autoIncrement()
                 .build();
 
         Field description = new FieldBuilder()
